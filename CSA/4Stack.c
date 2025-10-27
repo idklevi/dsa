@@ -1,73 +1,74 @@
-#include <stdio.h>[span_155](end_span)
-[span_156](start_span)#include <stdlib.h>[span_156](end_span)
 
-[span_157](start_span)#define MAX 100[span_157](end_span)
-[span_158](start_span)int stack[MAX];[span_158](end_span)
-[span_159](start_span)int top = -1;[span_159](end_span)
+#include <stdio.h>
+#include <stdlib.h>
 
-[span_160](start_span)// Function to push an element[span_160](end_span)
-[span_161](start_span)void push(int value) {[span_161](end_span)
-    [span_162](start_span)if (top == MAX - 1) {[span_162](end_span)
-        [span_163](start_span)printf("Stack Overflow!\n");[span_163](end_span)
-    [span_164](start_span)} else {[span_164](end_span)
-        [span_165](start_span)top++;[span_165](end_span)
-        [span_166](start_span)stack[top] = value;[span_166](end_span)
-        [span_167](start_span)printf("%d pushed to the stack.\n", value);[span_167](end_span)
-    [span_168](start_span)}
-}[span_168](end_span)
+#define MAX 100
+int stack[MAX];
+int top = -1;
 
-[span_169](start_span)// Function to pop an element[span_169](end_span)
-[span_170](start_span)void pop() {[span_170](end_span)
-    [span_171](start_span)if (top == -1) {[span_171](end_span)
-        [span_172](start_span)printf("Stack Underflow!\n");[span_172](end_span)
-    [span_173](start_span)} else {[span_173](end_span)
-        [span_174](start_span)printf("%d popped from the stack.\n", stack[top]);[span_174](end_span)
-        [span_175](start_span)top--;[span_175](end_span)
-    [span_176](start_span)}
-}[span_176](end_span)
+// Function to push an element
+void push(int value) {
+    if (top == MAX - 1) {
+        printf("Stack Overflow!\n");
+    } else {
+        top++;
+        stack[top] = value;
+        printf("%d pushed to the stack.\n", value);
+    }
+}
 
-[span_177](start_span)// Function to display the stack[span_177](end_span)
-[span_178](start_span)void display() {[span_178](end_span)
-    [span_179](start_span)if (top == -1) {[span_179](end_span)
-        [span_180](start_span)printf("Stack is empty.\n");[span_180](end_span)
-    [span_181](start_span)} else {[span_181](end_span)
-        [span_182](start_span)printf("Stack contents:\n");[span_182](end_span)
-        [span_183](start_span)for (int i = top; i >= 0; i--)[span_183](end_span)
-        [span_184](start_span){
-            printf("%d\n", stack[i]);[span_184](end_span)
-        [span_185](start_span)}
-    }[span_185](end_span)
-[span_186](start_span)}
+// Function to pop an element
+void pop() {
+    if (top == -1) {
+        printf("Stack Underflow!\n");
+    } else {
+        printf("%d popped from the stack.\n", stack[top]);
+        top--;
+    }
+}
 
-// Main function[span_186](end_span)
-[span_187](start_span)int main() {[span_187](end_span)
-    [span_188](start_span)int choice, value;[span_188](end_span)
-    [span_189](start_span)while (1) {[span_189](end_span)
-        [span_190](start_span)printf("\n--- Stack Menu ---\n");[span_190](end_span)
-        [span_191](start_span)printf("1. Push\n");[span_191](end_span)
-        [span_192](start_span)printf("2. Pop\n");[span_192](end_span)
-        [span_193](start_span)printf("3. Display\n");[span_193](end_span)
-        [span_194](start_span)printf("4. Exit\n");[span_194](end_span)
-        [span_195](start_span)printf("Enter your choice: ");[span_195](end_span)
-        [span_196](start_span)scanf("%d", &choice);[span_196](end_span)
+// Function to display the stack
+void display() {
+    if (top == -1) {
+        printf("Stack is empty.\n");
+    } else {
+        printf("Stack contents:\n");
+        for (int i = top; i >= 0; i--)
+        {
+            printf("%d\n", stack[i]);
+        }
+    }
+}
+
+// Main function
+int main() {
+    int choice, value;
+    while (1) {
+        printf("\n--- Stack Menu ---\n");
+        printf("1. Push\n");
+        printf("2. Pop\n");
+        printf("3. Display\n");
+        printf("4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
         
-        [span_197](start_span)switch (choice) {[span_197](end_span)
-            [span_198](start_span)case 1:[span_198](end_span)
-                [span_199](start_span)printf("Enter the value to push: ");[span_199](end_span)
-                [span_200](start_span)scanf("%d", &value);[span_200](end_span)
-                [span_201](start_span)push(value);[span_201](end_span)
-                [span_202](start_span)break;[span_202](end_span)
-            [span_203](start_span)case 2:[span_203](end_span)
-                [span_204](start_span)pop();[span_204](end_span)
-                [span_205](start_span)break;[span_205](end_span)
-            [span_206](start_span)case 3:[span_206](end_span)
-                [span_207](start_span)display();[span_207](end_span)
-                [span_208](start_span)break;[span_208](end_span)
-            [span_209](start_span)case 4:[span_209](end_span)
-                [span_210](start_span)exit(0);[span_210](end_span)
-            [span_211](start_span)default:[span_211](end_span)
-                [span_212](start_span)printf("Invalid choice. Try again.\n");[span_212](end_span)
-        [span_213](start_span)}
-    }[span_213](end_span)
-    [span_214](start_span)return 0;[span_214](end_span)
-[span_215](start_span)}
+        switch (choice) {
+            case 1:
+                printf("Enter the value to push: ");
+                scanf("%d", &value);
+                push(value);
+                break;
+            case 2:
+                pop();
+                break;
+            case 3:
+                display();
+                break;
+            case 4:
+                exit(0);
+            default:
+                printf("Invalid choice. Try again.\n");
+        }
+    }
+    return 0;
+}
